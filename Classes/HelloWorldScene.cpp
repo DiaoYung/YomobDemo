@@ -1,6 +1,17 @@
+//
+//  Created by steve on 2017-5-6.
+//  作者微信：steve@杨迪
+//  QQ：243859264 邮箱：steve@lemon-jam.com
+//
+
 #include "HelloWorldScene.h"
+#include "VisibleRect.h"
+#include "cocosbuilder/CocosBuilder.h"
+#include "TGSDKCocos2dxHelper.h"
+
 
 USING_NS_CC;
+USING_NS_CC_EXT;
 
 Scene* HelloWorld::createScene()
 {
@@ -17,6 +28,22 @@ Scene* HelloWorld::createScene()
     return scene;
 }
 
+void HelloWorld::onEnter(){
+	Layer::onEnter();
+
+    yomob::TGSDKCocos2dxHelper::setDebugModel(true);
+    yomob::TGSDKCocos2dxHelper::initialize("8K39oYgb6c779756C86O");
+    yomob::TGSDKCocos2dxHelper::preload();
+
+    if (yomob::TGSDKCocos2dxHelper::couldShowAd("api8RwB5n1nZ4nHeftx")) {
+            yomob::TGSDKCocos2dxHelper::showAd("api8RwB5n1nZ4nHeftx");
+
+    }
+
+
+
+}
+
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
@@ -30,50 +57,55 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
+    this->setTouchEnabled(true);
+    this->setTouchMode(Touch::DispatchMode::ONE_BY_ONE);
 
-    // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+    Layer = Node::create();
+    this->addChild(Layer,160);
+    LayerColor *c = LayerColor::create(Color4B::BLACK);
+    Layer->addChild(c);
+    c->setOpacity(160);
+    Sprite *bg = Sprite::create("shop_bg.png");
+    // bg->setScale(1.2);
+    bg->setPosition(Point(VisibleRect::center().x,VisibleRect::center().y));
+
+
+    Layer->addChild(bg);
+    auto *listener = EventListenerTouchOneByOne::create();//创建一个触摸监听
+    listener->setSwallowTouches(true);//设置不想向下传递触摸  true是不想 默认为false
     
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
+    listener->onTouchBegan = [=](Touch* touch, Event* event){
+        return true;
+    };
 
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
+    listener->onTouchMoved = [](Touch* touch, Event* event){
+    };
     
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
+    listener->onTouchEnded = [=](Touch* touch, Event* event){
+    };
     
-    // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener,Layer);
+	{
+		ControlButton *price = ControlButton::create("看视频","ws.ttf", 13);
+	    Layer->addChild(price);
+	    price->setPosition(bg->getPosition().x,bg->getPosition().y-70);
+	    price->setTitleColorForState(Color3B(255,255,255), Control::State::NORMAL);
+	    price->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::videoButton), Control::EventType::TOUCH_DOWN);
 
-    // add the label as a child to this layer
-    this->addChild(label, 1);
 
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
+	}
 
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+	return true;
 
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
-    
-    return true;
 }
+
+void HelloWorld::videoButton(Ref * sender, Control::EventType controlEvent){
+
+        if (yomob::TGSDKCocos2dxHelper::couldShowAd("api8RwB5n1nZ4nHeftx")) {
+             yomob::TGSDKCocos2dxHelper::showAd("api8RwB5n1nZ4nHeftx");
+         }
+}
+
 
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

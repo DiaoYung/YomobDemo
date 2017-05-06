@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.example.cocos2dx.yomobdemo"
+      package="lemonjam.dragonjump"
       android:versionCode="1"
       android:versionName="1.0"
       android:installLocation="auto">
@@ -26,6 +26,74 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+                <!-- Inmobi -->
+        <activity 
+            android:name="com.inmobi.rendering.InMobiAdActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:hardwareAccelerated="true" />
+        <receiver
+            android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver"
+            android:enabled="true"
+            android:exported="true" >
+                <intent-filter>
+                    <action android:name="com.inmobi.share.id" />
+                </intent-filter>
+         </receiver>
+
+        <!-- TG CP -->
+        <activity android:name="com.soulgame.sgsdk.adsdk.TGCPADActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
+        <!-- DianJoy -->
+        <service 
+            android:name="com.dianjoy.video.DianViewService" 
+            android:process=":playgame" />
+        <activity
+            android:name="com.dianjoy.video.DianViewActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"/>
+        <activity 
+            android:name="com.dianjoy.video.DianViewAdBrowser" 
+            android:configChanges="orientation|screenSize"/>
+
+        <!-- AYang -->
+        <activity
+            android:name="com.afk.client.ads.AdActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="sensor"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+
+
+        <activity
+            android:name="com.afk.permission.RequestPermissionActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="sensor"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
+        <service
+            android:name="com.afk.client.ads.DownloadService"
+            android:exported="false" />
+
+        <!-- Vungle -->
+        <activity
+            android:name="com.vungle.publisher.VideoFullScreenAdActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:name="com.vungle.publisher.MraidFullScreenAdActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+
+        <!-- Domob -->
+        <activity 
+            android:name="com.pad.android_independent_video_sdk.view.DvxVideoActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:configChanges="orientation|keyboard|screenSize|screenLayout"/>
+        <service android:name="com.pad.android_independent_video_sdk.IndependentService"/>
+        
     </application>
 
     <supports-screens android:anyDensity="true"
@@ -35,4 +103,16 @@
                       android:xlargeScreens="true"/>
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
 </manifest> 

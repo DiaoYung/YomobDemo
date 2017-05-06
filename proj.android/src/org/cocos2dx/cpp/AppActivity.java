@@ -26,7 +26,73 @@ THE SOFTWARE.
 ****************************************************************************/
 package org.cocos2dx.cpp;
 
+import java.util.Map;
+
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import com.soulgame.sgsdk.tgsdklib.TGSDK;
+import com.soulgame.sgsdk.tgsdklib.TGSDKServiceResultCallBack;
+import com.soulgame.sgsdk.tgsdklib.ad.ITGADListener;
+import com.soulgame.sgsdk.tgsdklib.ad.ITGPreloadListener;
+import com.soulgame.sgsdk.tgsdklib.ad.ITGRewardVideoADListener;
+import com.soulgame.sgsdk.tgsdklib.cocos2dx.TGSDKCocos2dxHelper;
+
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.WindowManager;
+import android.widget.RelativeLayout;
+import android.view.ViewGroup.LayoutParams;
+
+
 public class AppActivity extends Cocos2dxActivity {
+	
+	private static AppActivity _appActiviy;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState){
+	    super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//横屏：根据传感器横向切换
+        TGSDK.setDebugModel(true);
+        TGSDKCocos2dxHelper.setup(this);
+	}
+	
+	@Override
+	protected void onStart() {
+	    super.onStart();
+	    TGSDK.onStart(this);
+	}
+	
+	@Override
+	protected void onStop() {
+	    super.onStop();
+	    TGSDK.onStop(this);
+	}
+	
+	@Override
+	protected void onPause() {
+	    super.onPause();
+	    TGSDK.onPause(this);
+	}
+	
+	@Override
+	protected void onResume() {
+	    super.onResume();
+	    TGSDK.onResume(this);
+	}
+	
+	@Override
+	protected void onDestroy() {
+	    super.onDestroy();
+	    TGSDK.onDestroy(this);
+	}
+	
+	@Override
+	protected void onActivityResult(int reqCode, int resCode, Intent data) {
+	    super.onActivityResult(reqCode, resCode, data);
+	    TGSDK.onActivityResult(this, reqCode, resCode, data);
+	}
+
 }
