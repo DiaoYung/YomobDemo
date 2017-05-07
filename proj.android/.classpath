@@ -3,8 +3,6 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="lib" path="libs/ayang-protobuf-java-2.6.1.jar"/>
 	<classpathentry kind="lib" path="libs/ayang-sdk-mobile-ad-2.5.jar"/>
 	<classpathentry kind="lib" path="libs/dagger-2.7.jar"/>
@@ -26,5 +24,7 @@
 	<classpathentry kind="lib" path="libs/vungle-publisher-adaptive-id-4.0.3.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/libcocos2dx"/>
 	<classpathentry kind="lib" path="/libcocos2dx/libs/android-async-http-1.4.8.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

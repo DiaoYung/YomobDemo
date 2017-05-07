@@ -32,11 +32,11 @@ void HelloWorld::onEnter(){
 	Layer::onEnter();
 
     yomob::TGSDKCocos2dxHelper::setDebugModel(true);
-    yomob::TGSDKCocos2dxHelper::initialize("8K39oYgb6c779756C86O");
+    yomob::TGSDKCocos2dxHelper::initialize("p196wHvufx005lPj2P63");
     yomob::TGSDKCocos2dxHelper::preload();
 
-    if (yomob::TGSDKCocos2dxHelper::couldShowAd("api8RwB5n1nZ4nHeftx")) {
-            yomob::TGSDKCocos2dxHelper::showAd("api8RwB5n1nZ4nHeftx");
+    if (yomob::TGSDKCocos2dxHelper::couldShowAd("vVxf8P1riB0IVfalxPy")) {
+            yomob::TGSDKCocos2dxHelper::showAd("vVxf8P1riB0IVfalxPy");
 
     }
 
@@ -62,12 +62,9 @@ bool HelloWorld::init()
 
     Layer = Node::create();
     this->addChild(Layer,160);
-    LayerColor *c = LayerColor::create(Color4B::BLACK);
-    Layer->addChild(c);
-    c->setOpacity(160);
-    Sprite *bg = Sprite::create("shop_bg.png");
-    // bg->setScale(1.2);
-    bg->setPosition(Point(VisibleRect::center().x,VisibleRect::center().y));
+    Sprite *bg = Sprite::create("HelloWorld.png");
+
+    bg->setPosition(VisibleRect::center());
 
 
     Layer->addChild(bg);
@@ -86,9 +83,14 @@ bool HelloWorld::init()
     
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener,Layer);
 	{
-		ControlButton *price = ControlButton::create("看视频","ws.ttf", 13);
+        Scale9Sprite* btnNormal = Scale9Sprite::create("price_coin.png");
+
+        LabelTTF* title = LabelTTF::create("看视频得金币","ws.ttf",13);
+
+        ControlButton* price = ControlButton::create(title,btnNormal);
+
 	    Layer->addChild(price);
-	    price->setPosition(bg->getPosition().x,bg->getPosition().y-70);
+	    price->setPosition(bg->getPosition().x,bg->getPosition().y-120);
 	    price->setTitleColorForState(Color3B(255,255,255), Control::State::NORMAL);
 	    price->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::videoButton), Control::EventType::TOUCH_DOWN);
 
@@ -101,8 +103,8 @@ bool HelloWorld::init()
 
 void HelloWorld::videoButton(Ref * sender, Control::EventType controlEvent){
 
-        if (yomob::TGSDKCocos2dxHelper::couldShowAd("api8RwB5n1nZ4nHeftx")) {
-             yomob::TGSDKCocos2dxHelper::showAd("api8RwB5n1nZ4nHeftx");
+        if (yomob::TGSDKCocos2dxHelper::couldShowAd("vVxf8P1riB0IVfalxPy")) {
+             yomob::TGSDKCocos2dxHelper::showAd("vVxf8P1riB0IVfalxPy");
          }
 }
 
