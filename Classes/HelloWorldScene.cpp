@@ -31,12 +31,9 @@ Scene* HelloWorld::createScene()
 void HelloWorld::onEnter(){
 	Layer::onEnter();
 
-    yomob::TGSDKCocos2dxHelper::setDebugModel(true);
-    yomob::TGSDKCocos2dxHelper::initialize("p196wHvufx005lPj2P63");
-    yomob::TGSDKCocos2dxHelper::preload();
-
-    if (yomob::TGSDKCocos2dxHelper::couldShowAd("vVxf8P1riB0IVfalxPy")) {
-            yomob::TGSDKCocos2dxHelper::showAd("vVxf8P1riB0IVfalxPy");
+	//调用广告函数
+    if (yomob::TGSDKCocos2dxHelper::couldShowAd("zDM9PkekLLxmiVxLaS5")) {
+            yomob::TGSDKCocos2dxHelper::showAd("zDM9PkekLLxmiVxLaS5");
 
     }
 
@@ -103,8 +100,10 @@ bool HelloWorld::init()
 
 void HelloWorld::videoButton(Ref * sender, Control::EventType controlEvent){
 
-        if (yomob::TGSDKCocos2dxHelper::couldShowAd("vVxf8P1riB0IVfalxPy")) {
-             yomob::TGSDKCocos2dxHelper::showAd("vVxf8P1riB0IVfalxPy");
+		//调用广告函数,Button广告
+
+        if (yomob::TGSDKCocos2dxHelper::couldShowAd("iA4viAkkwuEd7H0rCG7")) {
+             yomob::TGSDKCocos2dxHelper::showAd("iA4viAkkwuEd7H0rCG7");
          }
 }
 

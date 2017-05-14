@@ -33,7 +33,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview = GLViewImpl::create("My Game");
         director->setOpenGLView(glview);
     }
-    yomob::TGSDKCocos2dxHelper::setDebugModel(true);
+
+    //初始化yomob
+
+    yomob::TGSDKCocos2dxHelper::initialize("h3909UDCsi984P21t4EO");
+    yomob::TGSDKCocos2dxHelper::preload();
 
     float designX = 1242;
     FileUtils::getInstance()->addSearchPath("publish");

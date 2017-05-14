@@ -22,9 +22,9 @@
 	<classpathentry kind="lib" path="libs/tgsdkadvungle.1.6.4.jar"/>
 	<classpathentry kind="lib" path="libs/videolibrary-release_v1.2.2.jar"/>
 	<classpathentry kind="lib" path="libs/vungle-publisher-adaptive-id-4.0.3.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/libcocos2dx"/>
-	<classpathentry kind="lib" path="/libcocos2dx/libs/android-async-http-1.4.8.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/libcocos2dx-y"/>
+	<classpathentry kind="lib" path="/libcocos2dx-y/libs/android-async-http-1.4.8.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
